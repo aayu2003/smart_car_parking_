@@ -1,0 +1,213 @@
+WindowManager:
+    Login:
+    Booking:
+    Slot:
+    QRgenerate:
+
+<Login>:
+    name:"login"
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width,root.height
+        padding:100
+        GridLayout:
+            rows:2
+            BoxLayout:
+                orientation:"vertical"
+                size_hint:None,None
+                height:200
+                Image:
+                    source:"profile.webp"
+                    allow_stretch:True
+                    keep_ratio:True
+                    pos_hint:{'x':1}
+            GridLayout:
+                rows:3
+                spacing:20
+                TextInput:
+                    id:lnuminp
+                    multiline:False
+                    hint_text:"PHONE NUMBER"
+                    size_hint:None,None
+                    width:300
+                    height:40
+                TextInput:
+                    id:lpassinp
+                    multiline:False
+                    hint_text:"PASSWORD"
+                    size_hint:None,None
+                    width:300
+                    height:40
+                BoxLayout:
+                    orientation:"vertical"
+                    size_hint:None,None
+                    height:40
+                    width:300
+
+                    Button:
+                        text:"LOGIN"
+                        size_hint:None,None
+                        size:150,30
+
+                        pos_hint:{'x':0.2}
+                        outline_color:(0,0,0)
+                        outline_width:2
+                        background_color:(0,0,0,0)
+                        background_normal:''
+                        canvas.before:
+                            Color:
+                                rgba:(230/255, 204/255, 255/255,1)
+                            RoundedRectangle:
+                                size:self.size
+                                pos:self.pos
+                                radius:[20]
+                        on_press:root.presslog()
+                        on_release: app.root.current= "booking"
+
+<Booking>:
+    name:"booking"
+    Image:
+        source:"background.jpg"
+        allow_stretch:True
+        keep_ratio:True
+    BoxLayout:
+        orientation:"vertical"
+        GridLayout:
+            rows:2
+            padding:20
+            GridLayout:
+                cols:2
+                pos_hint:{'x':0.1}
+                size_hint:None,None
+
+                TextInput:
+                    id:booksearch
+                    multiline:False
+                    size_hint:None,None
+                    width:350
+                    height:40
+                    hint_text:"search by area"
+                Button:
+                    text:"search"
+                    size_hint:None,None
+                    size:100,40
+                    background_color:(255/255, 102/255, 204/255,1)
+                    background_normal:''
+                    on_press:root.search()
+
+
+            ScrollView:
+                GridLayout:
+                    id:gd
+                    cols:1
+                    spacing:10
+                    padding:100
+                    size_hint_y:None
+                    height:self.minimum_height
+
+<Slot>:
+    name:"slot"
+    GridLayout:
+        rows:2
+        GridLayout:
+            cols:2
+            size_hint:None,None
+            height:40
+            spacing:50
+            Button:
+                id:available
+                text:"AVAILABLE"
+                size_hint:None,None
+                size:200,30
+
+                pos_hint:{'x':0.2}
+                outline_color:(0,0,0)
+                outline_width:2
+                background_color:(0,0,0,0)
+                background_normal:''
+                canvas.before:
+                    Color:
+                        rgba:(230/255, 204/255, 255/255,1)
+                    RoundedRectangle:
+                        size:self.size
+                        pos:self.pos
+                        radius:[20]
+
+            BoxLayout:
+                orientation:"vertical"
+                Label:
+                    id:availabletext
+                    text:""
+                    bold:True
+                    color:(0,0,0,1)
+                    size_hint:None,None
+                    height:40
+                    pos_hint:{'x':1}
+        ScrollView:
+            GridLayout:
+                id:availablelist
+                cols:1
+                spacing:10
+                padding:50
+                size_hint_y:None
+                height:self.minimum_height
+<QRgenerate>:
+    name:"qrgeneration"
+    GridLayout:
+        rows:3
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:None,None
+            height:30
+            GridLayout:
+                cols:2
+                Button:
+                    id:generate
+                    disabled:False
+                    text:"GENERATE"
+                    disabled:False
+                    size_hint:None,None
+                    size:400,30
+                    outline_color:(0,0,0)
+                    outline_width:2
+                    background_color:(0,0,0,0)
+                    background_normal:''
+                    canvas.before:
+                        Color:
+                            rgba:(230/255, 204/255, 255/255,1)
+                        RoundedRectangle:
+                            size:self.size
+                            pos:self.pos
+                            radius:[20]
+                    on_press:root.generate1()
+                Button:
+                    disabled:False
+                    text:"BACK"
+                    disabled:False
+                    size_hint:None,None
+                    size:100,30
+                    outline_color:(0,0,0)
+                    outline_width:2
+                    background_color:(0,0,0,0)
+                    background_normal:''
+                    canvas.before:
+                        Color:
+                            rgba:(230/255, 204/255, 255/255,1)
+                        RoundedRectangle:
+                            size:self.size
+                            pos:self.pos
+                            radius:[20]
+                    on_release: app.root.current= "booking"
+        Label:
+            id:pass_label
+            text:"PASS FOR ENTRY"
+            size_hint:None,None
+            color:(0,0,0,1)
+            size:500,30
+            bold:True
+        BoxLayout:
+            orientation:"vertical"
+            Image:
+                id:img
+                source:"background.jpg"
+                allow_stretch:True
